@@ -1,0 +1,55 @@
+#Algoritmo para formulario do usuario
+
+nome = input("Digite seu nome: ")
+idade = int(input("Digite sua idade: "))
+altura = float(input("Digite sua altura: "))
+massa = float(input("Digite seu peso: "))
+est_civil = input("""Digite seu estado civil
+S-Solteiro
+C-Casado
+D-Divorciado
+SE-Separado
+V-Viúvo: \n""").upper()
+
+imc = massa/altura**2
+
+if imc<17:
+    pimc = " muito abaixo do peso!"
+elif imc >= 17 and imc <18.5:
+    pimc = "Abaixo do peso!"
+elif imc >= 18.5 and imc <25:
+    pimc = "Peso normal!"
+elif imc >= 25 and imc <30:
+    pimc = "Acima do peso!"
+elif imc >= 30 and imc <35:
+    pimc = "Obesidade I!"
+elif imc >= 35 and imc <40:
+    pimc = "Obesidade Severa!"
+else:
+    pimc = "Obesidade Morbida!"
+    
+
+match est_civil:
+    case 'S':
+        pcivil = "Solteiro"
+    case 'C':
+        pcivil = "Casado"
+    case 'SE' | 'D':
+        pcivil = "Divorciado"
+    case 'V':
+        pcivil = "Viúvo"
+    case _:
+        pcivil = "Estado Civil não identificado"
+    
+print(f"""
+            ******************************
+            *   Formulario do Usuário    *
+            *                            *
+            *                            *
+            * Nome: {nome}               *
+            * Idade: {idade} Anos        *
+            * IMC: {massa/altura**2:.2f} *
+            * {pimc}
+              {pcivil}
+            ******************************
+""")
